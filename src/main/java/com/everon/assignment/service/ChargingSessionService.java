@@ -11,7 +11,7 @@ public interface ChargingSessionService {
 
     CarChargingSession stopSession(String stationId);
 
-    List<CarChargingSession> stopSessions();
+    List<CarChargingSession> getSessions();
 
     Summary summary();
 

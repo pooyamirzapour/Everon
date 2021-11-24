@@ -20,7 +20,7 @@ public class ChargingSessionServiceImpl implements ChargingSessionService{
     }
 
     @Override
-    public List<CarChargingSession> stopSessions() {
+    public List<CarChargingSession> getSessions() {
         return null;
     }
 
