@@ -22,13 +22,13 @@ public class ExceptionHandlers {
      * @return
      */
     @ExceptionHandler(ApiServiceException.class)
-    public ResponseEntity<?> backbaseServiceException(ApiServiceException exception) {
+    public ResponseEntity<?> apiServiceException(ApiServiceException exception) {
         log.error(exception.getMessage());
         return new ResponseEntity<>(new ErrorMsg(exception.getErrorCode().getValue(), exception.getMessage()), exception.getHttpStatus());
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> backbaseServiceException(Exception exception) {
+    public ResponseEntity<?> apiServiceException(Exception exception) {
         log.error(exception.getMessage());
         return new ResponseEntity<>(new ErrorMsg(2000, exception.getMessage()), HttpStatus.UNPROCESSABLE_ENTITY);
     }

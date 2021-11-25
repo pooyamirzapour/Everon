@@ -12,10 +12,8 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
@@ -25,7 +23,7 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
 
     ConcurrentSkipListMap<LocalDateTime, CarChargingSession> map = new ConcurrentSkipListMap<>();
-    
+
     ReentrantLock lock = new ReentrantLock();
 
     private CarChargingSession createCarChargingSession(String stationId) {
@@ -74,9 +72,9 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
         Collection<CarChargingSession> values = map.tailMap(LocalDateTime.now().minusSeconds(60), true).values();
         long startedCount = values.stream().filter(f -> f.getStatus().equals(StatusEnum.IN_PROGRESS)).count();
         long stoppedCount = values.stream().filter(f -> f.getStatus().equals(StatusEnum.FINISHED)).count();
-        long totalCount=startedCount+stoppedCount;
+        long totalCount = startedCount + stoppedCount;
 
-        return new Summary(totalCount,startedCount,stoppedCount);
+        return new Summary(totalCount, startedCount, stoppedCount);
 
     }
 }
