@@ -3,7 +3,8 @@ There are some assumptions and requirements inside the application :
 ### Requirement
 1) Application is thread-safe
 2) Application is using in-memory data structures.
-3) Computational complexity meets the log(n) upper bound.
+3) Computational complexity for retrieve all charging sessions meets O(n), and for other services is
+    O(log(n)).
 
 ### Assumptions
 1) The architecture is microservice style.
