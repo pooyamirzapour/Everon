@@ -27,7 +27,7 @@ private ChargingSessionRepository chargingSessionRepository;
 
     @Override
     public List<CarChargingSession> getSessions() {
-        return null;
+        return chargingSessionRepository.findAll();
     }
 
     @Override
