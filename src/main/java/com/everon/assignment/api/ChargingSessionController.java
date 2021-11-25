@@ -1,5 +1,6 @@
 package com.everon.assignment.api;
 
+import com.everon.assignment.model.dto.NewSessionRequest;
 import com.everon.assignment.model.entity.CarChargingSession;
 import com.everon.assignment.model.entity.Summary;
 import com.everon.assignment.service.ChargingSessionService;
@@ -26,8 +27,8 @@ public class ChargingSessionController {
             "for the station.", nickname = "New Session", notes = "New Charging Session")
     @PostMapping("/chargingSessions")
     @ResponseStatus(HttpStatus.OK)
-    public CarChargingSession newChargingSession(@RequestBody String stationId)  {
-        return chargingSessionService.newSession(stationId);
+    public CarChargingSession newChargingSession(@RequestBody NewSessionRequest request)  {
+        return chargingSessionService.newSession(request.getStationId());
     }
 
 
@@ -35,7 +36,7 @@ public class ChargingSessionController {
             , nickname = "Stop Session", notes = "Stop Charging Session")
     @PutMapping("/chargingSessions/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CarChargingSession stopChargingSession(@PathVariable("title") String stationId) throws Exception {
+    public CarChargingSession stopChargingSession(@PathVariable("id") String stationId) throws Exception {
         return chargingSessionService.stopSession(stationId);
     }
 

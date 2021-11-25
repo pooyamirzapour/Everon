@@ -22,7 +22,7 @@ private ChargingSessionRepository chargingSessionRepository;
 
     @Override
     public CarChargingSession newSession(String stationId) {
-        return chargingSessionRepository.save(stationId);
+        return chargingSessionRepository.save(stationId.trim());
     }
 
     @Override

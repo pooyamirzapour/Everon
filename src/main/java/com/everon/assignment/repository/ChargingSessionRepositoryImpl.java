@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.locks.ReentrantLock;
@@ -64,9 +65,14 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
     public CarChargingSession update(String uuid) throws ApiServiceException {
         LocalDateTime localDateTime = DateUtil.uuidToLocalDateTime(UUID.fromString(uuid));
         CarChargingSession carChargingSession = map.get(localDateTime);
-        if (carChargingSession == null)
+
+        if (Objects.isNull(carChargingSession)  || !carChargingSession.getId().equals(UUID.fromString(uuid)))
             throw new ApiServiceException(ErrorCode.ID_IS_NOT_VALID.getMessage(),
                     ErrorCode.ID_IS_NOT_VALID, HttpStatus.UNPROCESSABLE_ENTITY);
+
+        if (Objects.nonNull(carChargingSession.getStoppedAt()))
+            throw new ApiServiceException(ErrorCode.ID_IS_ALREADY_STOPPED.getMessage(),
+                    ErrorCode.ID_IS_ALREADY_STOPPED, HttpStatus.UNPROCESSABLE_ENTITY);
 
         carChargingSession.setStoppedAt(LocalDateTime.now());
         carChargingSession.setStatus(StatusEnum.FINISHED);
