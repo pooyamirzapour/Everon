@@ -17,13 +17,7 @@ To run the application please click:
 To test the application please click:
 [How to test](how_to_test.md)
 
-### To do
-To Know future works please click:
-[To do](to_do.md)
-
-
-## Code Coverage
+### Code Coverage
 A measurement of how many lines and classes of code have been tested.
-
 
 ![img_1.png](img_1.png)
