@@ -4,8 +4,12 @@ import com.everon.assignment.exception.ApiServiceException;
 import com.everon.assignment.model.entity.CarChargingSession;
 import com.everon.assignment.model.entity.Summary;
 
+/**
+ * Repository interface has save,update, findAll, summary method.
+ * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
+ */
+
 import java.util.List;
-import java.util.UUID;
 
 public interface ChargingSessionRepository {
 
@@ -13,12 +17,9 @@ public interface ChargingSessionRepository {
 
     List<CarChargingSession> findAll();
 
-    CarChargingSession stop(String uuid) throws  ApiServiceException;
+    CarChargingSession update(String uuid) throws ApiServiceException;
 
-    Summary summary() ;
-
-
-
+    Summary summary();
 
 
 }

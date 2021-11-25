@@ -6,6 +6,11 @@ import com.everon.assignment.model.entity.Summary;
 
 import java.util.List;
 
+/**
+ * ChargingSessionService interface has newSession,stopSession, getSessions, summary method.
+ * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
+ */
+
 public interface ChargingSessionService {
 
     CarChargingSession newSession(String stationId);

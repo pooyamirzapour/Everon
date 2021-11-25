@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * ChargingSessionService class implements newSession,stopSession, getSessions, summary method.
+ * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
+ */
+
 @Service
 @AllArgsConstructor
 public class ChargingSessionServiceImpl implements ChargingSessionService{
@@ -22,7 +27,7 @@ private ChargingSessionRepository chargingSessionRepository;
 
     @Override
     public CarChargingSession stopSession(String stationId) throws Exception {
-        return chargingSessionRepository.stop(stationId);
+        return chargingSessionRepository.update(stationId);
     }
 
     @Override

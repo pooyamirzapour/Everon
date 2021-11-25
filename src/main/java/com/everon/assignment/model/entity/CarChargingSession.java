@@ -6,6 +6,11 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+/**
+ * CarChargingSession entity class.
+ * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
+ */
+
 @Data
 public class CarChargingSession {
     private UUID id;

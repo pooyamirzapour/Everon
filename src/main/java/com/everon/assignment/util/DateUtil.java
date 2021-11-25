@@ -6,6 +6,11 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
+/**
+ * DateUtil class to create a LocalDateTome based on UUID.
+ * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
+ */
+
 public class DateUtil {
 
     final static long EPOCH_DIFFERENCE = 122192928000000000L;

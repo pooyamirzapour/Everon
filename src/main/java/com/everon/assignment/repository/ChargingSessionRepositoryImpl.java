@@ -18,6 +18,12 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
+/**
+ * Repository class implements save,update, findAll, summary.
+ * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
+ */
+
+
 @Repository
 public class ChargingSessionRepositoryImpl implements ChargingSessionRepository {
 
@@ -55,7 +61,7 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
     }
 
     @Override
-    public CarChargingSession stop(String uuid) throws ApiServiceException {
+    public CarChargingSession update(String uuid) throws ApiServiceException {
         LocalDateTime localDateTime = DateUtil.uuidToLocalDateTime(UUID.fromString(uuid));
         CarChargingSession carChargingSession = map.get(localDateTime);
         if (carChargingSession == null)
