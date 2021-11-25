@@ -30,12 +30,12 @@ public class ChargingSessionController {
             , nickname = "Stop Session", notes = "Stop Charging Session")
     @PutMapping("/chargingSessions/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CarChargingSession stopChargingSession(@PathVariable("title") String stationId)  {
+    public CarChargingSession stopChargingSession(@PathVariable("title") String stationId) throws Exception {
         return chargingSessionService.stopSession(stationId);
     }
 
     @ApiOperation(value = "Retrieve all charging session"
-            , nickname = "Retrieve Sessions", notes = "Retrieveve All Charging Session")
+            , nickname = "Retrieve Sessions", notes = "Retrieve All Charging Session")
     @GetMapping("/chargingSessions")
     @ResponseStatus(HttpStatus.OK)
     public List<CarChargingSession> getChargingSessions()  {

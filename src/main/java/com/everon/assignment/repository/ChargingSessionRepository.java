@@ -1,5 +1,6 @@
 package com.everon.assignment.repository;
 
+import com.everon.assignment.exception.ApiServiceException;
 import com.everon.assignment.model.entity.CarChargingSession;
 
 import java.util.List;
@@ -11,7 +12,9 @@ public interface ChargingSessionRepository {
 
     List<CarChargingSession> find();
 
-    CarChargingSession stop(UUID id) throws Exception;
+    CarChargingSession stop(String uuid) throws Exception, ApiServiceException;
+
+
 
 
 }

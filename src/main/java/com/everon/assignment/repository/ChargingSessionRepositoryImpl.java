@@ -1,9 +1,12 @@
 package com.everon.assignment.repository;
 
+import com.everon.assignment.exception.ApiServiceException;
 import com.everon.assignment.model.entity.CarChargingSession;
+import com.everon.assignment.model.enums.ErrorCode;
 import com.everon.assignment.model.enums.StatusEnum;
 import com.everon.assignment.util.DateUtil;
 import com.fasterxml.uuid.Generators;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -18,13 +21,11 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
 
     ConcurrentHashMap<Long, CarChargingSession> map = new ConcurrentHashMap<>();
-
     ReentrantLock lock = new ReentrantLock();
 
     private CarChargingSession createCarChargingSession(String stationId) {
         CarChargingSession carChargingSession = new CarChargingSession();
         UUID uuid = Generators.timeBasedGenerator().generate();
-        ;
         carChargingSession.setId(uuid);
         carChargingSession.setStationId(stationId);
         carChargingSession.setStartedAt(DateUtil.uuidToLocalDateTime(uuid));
@@ -51,17 +52,12 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
     }
 
     @Override
-    public CarChargingSession stop(UUID uuid) throws Exception {
-        LocalDateTime localDateTime = DateUtil.uuidToLocalDateTime(uuid);
+    public CarChargingSession stop(String uuid) throws ApiServiceException {
+        LocalDateTime localDateTime = DateUtil.uuidToLocalDateTime(UUID.fromString(uuid));
         CarChargingSession carChargingSession = map.get(localDateTime);
         if (carChargingSession == null)
-            throw new Exception("");
-
+            throw new ApiServiceException(ErrorCode.ID_IS_NOT_VALID.getMessage(), ErrorCode.ID_IS_NOT_VALID, HttpStatus.UNPROCESSABLE_ENTITY);
         return carChargingSession;
     }
 
-    private CarChargingSession findById(UUID id) {
-        long timestamp = id.timestamp();
-        return null;
-    }
 }
