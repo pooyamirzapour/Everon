@@ -1,6 +1,5 @@
 package com.everon.assignment.service;
 
-import com.everon.assignment.exception.ApiServiceException;
 import com.everon.assignment.model.entity.CarChargingSession;
 import com.everon.assignment.model.entity.Summary;
 import com.everon.assignment.repository.ChargingSessionRepository;
@@ -10,15 +9,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * ChargingSessionService class implements newSession,stopSession, getSessions, summary method.
+ * ChargingSessionService class implements newSession,stopSession, getSessions, and summary methods.
  * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
  */
 
 @Service
 @AllArgsConstructor
-public class ChargingSessionServiceImpl implements ChargingSessionService{
+public class ChargingSessionServiceImpl implements ChargingSessionService {
 
-private ChargingSessionRepository chargingSessionRepository;
+    private ChargingSessionRepository chargingSessionRepository;
 
     @Override
     public CarChargingSession newSession(String stationId) {

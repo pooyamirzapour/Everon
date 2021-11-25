@@ -62,6 +62,11 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
     }
 
     @Override
+    public void clear() {
+         map.clear();
+    }
+
+    @Override
     public CarChargingSession update(String uuid) throws ApiServiceException {
         LocalDateTime localDateTime = DateUtil.uuidToLocalDateTime(UUID.fromString(uuid));
         CarChargingSession carChargingSession = map.get(localDateTime);

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DateUtilTest {
 
     @Test
-    void uuidToLocalDateTime() {
+    void should_returnExpectedLocalDateTime_when_UUIDSet() {
         //2021-11-25T11:22:21.621014800
         UUID uuid = UUID.fromString("9ee26ae4-4dc4-11ec-be31-41a73aee740d");
         LocalDateTime localDateTime = DateUtil.uuidToLocalDateTime(uuid);
