@@ -9,6 +9,8 @@ import java.util.List;
 @Service
 public class ChargingSessionServiceImpl implements ChargingSessionService{
 
+
+
     @Override
     public CarChargingSession newSession(String stationId) {
         return null;

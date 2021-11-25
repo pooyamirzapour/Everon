@@ -1,4 +1,4 @@
-package com.everon.assignment.controller;
+package com.everon.assignment.api;
 
 import com.everon.assignment.model.entity.CarChargingSession;
 import com.everon.assignment.model.entity.Summary;
@@ -17,7 +17,7 @@ public class ChargingSessionController {
 
     private ChargingSessionService chargingSessionService;
 
-    @ApiOperation(value = "Submit a new charging session\n" +
+    @ApiOperation(value = "Submit a new charging session " +
             "for the station.", nickname = "New Session", notes = "New Charging Session")
     @PostMapping("/chargingSessions")
     @ResponseStatus(HttpStatus.OK)
