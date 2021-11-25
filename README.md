@@ -17,10 +17,6 @@ To run the application please click:
 To test the application please click:
 [How to test](how_to_test.md)
 
-### How To Scale
-For scaling the application please click:
-[How to scale](scale.md)
-
 ### To do
 To Know future works please click:
 [To do](to_do.md)

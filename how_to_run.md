@@ -34,21 +34,31 @@ This project can be run by three ways:
       ```
 and then run:
 java -jar /target/assignment-0.0.1-SNAPSHOT.jar
-
+### New Charging Session
 Web service URL to save a new car charging session **http://localhost:8086/chargingSessions**
-
       
       curl --location --request POST 'http://localhost:8086/chargingSessions/' \
       --header 'Content-Type: application/json' \
       --data-raw '{"stationId":"ABC-12345"}'
-
-
+      
+### Stop Charging Session
 Web service URL to stop car charging session **http://localhost:8086/chargingSessions/{id}**
+      
+      curl --location --request PUT 'http://localhost:8086/chargingSessions/49ffb96a-4e0d-11ec-bf51-0339fbaae89b'
 
+### Get All Charging Session
 Web service URL to get all car charging session **http://localhost:8086/chargingSessions**
 
+      
+      curl --location --request GET 'http://localhost:8086/chargingSessions'
+
+### Summary Report
 Web service URL to get a summary report. **http://localhost:8086/chargingSessions/summary**
 
+      
+      curl --location --request GET 'http://localhost:8086/chargingSessions/summary'
 
+
+### Swagger
 After running the project it can be used by any rest client or swagger.
 You can open Swagger by this link: **http://localhost:8086/swagger-ui.html**
