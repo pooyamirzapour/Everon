@@ -37,6 +37,6 @@ private ChargingSessionRepository chargingSessionRepository;
 
     @Override
     public Summary summary() {
-        return null;
+        return chargingSessionRepository.summary();
     }
 }
