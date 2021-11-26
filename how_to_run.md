@@ -1,14 +1,14 @@
 # Build and Run
 Build and Run DockerFile in "EveronAssignment" folder by create an image:
 
-docker build -f Dockerfile -t movie .
+docker build -f Dockerfile -t EveronAssignment .
 ## to see images:
 ```
 docker images
 ```
 ## to run the image:
 ```
-docker run -p 8086:8086 movie
+docker run -p 8086:8086 EveronAssignment
 ```
 ## to see all container:
 ```
