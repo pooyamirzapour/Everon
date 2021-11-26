@@ -1,5 +1,6 @@
 package com.everon.assignment.service;
 
+import com.everon.assignment.exception.ApiServiceException;
 import com.everon.assignment.model.entity.CarChargingSession;
 import com.everon.assignment.model.entity.Summary;
 import com.everon.assignment.repository.ChargingSessionRepository;
@@ -26,7 +27,7 @@ public class ChargingSessionServiceImpl implements ChargingSessionService {
     }
 
     @Override
-    public CarChargingSession stopSession(String stationId) throws Exception {
+    public CarChargingSession stopSession(String stationId) throws ApiServiceException {
         return chargingSessionRepository.update(stationId);
     }
 

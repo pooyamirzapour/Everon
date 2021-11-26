@@ -45,6 +45,11 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
         return carChargingSession;
     }
 
+    /**
+     * It saves a new car charging session
+     * @param stationId
+     * @return CarChargingSession
+     */
     @Override
     public CarChargingSession save(String stationId) {
         log.info("Starting the save in repository");
@@ -63,6 +68,10 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
         return carChargingSession;
     }
 
+    /**
+     * It finds all car charging session
+     * @return List<CarChargingSession>
+     */
     @Override
     public List<CarChargingSession> findAll() {
         log.info("Starting the findAll in repository");
@@ -74,6 +83,10 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
          map.clear();
     }
 
+    /**
+     * It finds all car charging session
+     * @return List<CarChargingSession>
+     */
     @Override
     public CarChargingSession update(String uuid) throws ApiServiceException {
         log.info("Starting the update in repository");
@@ -97,6 +110,10 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
         return carChargingSession;
     }
 
+    /**
+     * It makes a summary for last minute
+     * @return Summary
+     */
     @Override
     public Summary summary() {
         log.info("Starting the summary in repository");

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * Summary entity class.
+ * Summary entity class for report.
  * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
  */
 

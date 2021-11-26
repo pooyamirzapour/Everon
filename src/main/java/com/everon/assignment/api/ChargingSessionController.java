@@ -1,5 +1,6 @@
 package com.everon.assignment.api;
 
+import com.everon.assignment.exception.ApiServiceException;
 import com.everon.assignment.model.dto.NewSessionRequest;
 import com.everon.assignment.model.entity.CarChargingSession;
 import com.everon.assignment.model.entity.Summary;
@@ -23,6 +24,11 @@ public class ChargingSessionController {
 
     private ChargingSessionService chargingSessionService;
 
+    /**
+     * api for new Session
+     * @param request NewSessionRequest
+     * @return CarChargingSession
+     */
     @ApiOperation(value = "Submit a new charging session " +
             "for the station.", nickname = "New Session", notes = "New Charging Session")
     @PostMapping("/chargingSessions")
@@ -32,6 +38,12 @@ public class ChargingSessionController {
     }
 
 
+    /**
+     * For stop car charging session
+     * @param stationId
+     * @return CarChargingSession
+     * @throws Exception
+     */
     @ApiOperation(value = "Stop charging session"
             , nickname = "Stop Session", notes = "Stop Charging Session")
     @PutMapping("/chargingSessions/{id}")
@@ -40,6 +52,10 @@ public class ChargingSessionController {
         return chargingSessionService.stopSession(stationId);
     }
 
+    /**
+     * For get all car charging session
+     * @return List<CarChargingSession>
+     */
     @ApiOperation(value = "Retrieve all charging session"
             , nickname = "Retrieve Sessions", notes = "Retrieve All Charging Session")
     @GetMapping("/chargingSessions")
@@ -48,7 +64,10 @@ public class ChargingSessionController {
         return chargingSessionService.getSessions();
     }
 
-
+    /**
+     * For last a minute report
+     * @return Summary
+     */
     @ApiOperation(value = "Summary charging session"
             , nickname = "Summary Sessions", notes = "Summary Charging Session")
     @GetMapping("/chargingSessions/summary")
