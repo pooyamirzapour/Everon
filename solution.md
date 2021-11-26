@@ -6,7 +6,13 @@ session with the help of REST.
 The using data structure for this assignment is ***ConcurrentSkipListMap***. This construct
 allows us to create thread-safe logic in a lock-free way. It's ideal for problems when we
 want to make an immutable snapshot of the data while other threads are still inserting
-data into the map.
+data into the map. For making ***critical section*** it has been used from ***ReenrtantLock***.
+For more detail please see the below link:
+
+[ConcurrentSkipListMap] https://www.baeldung.com/java-concurrent-skip-list-map
+
+[ReenrtantLock] https://www.baeldung.com/java-concurrent-locks
+
 
 ### Technologies, Framework and Tools
 -	Java 8
