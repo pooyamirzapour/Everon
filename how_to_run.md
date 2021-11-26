@@ -34,6 +34,8 @@ This project can be run by three ways:
       ```
 and then run:
 java -jar /target/assignment-0.0.1-SNAPSHOT.jar
+
+##API
 ### New Charging Session
 Web service URL to save a new car charging session:
 **http://localhost:8086/chargingSessions**
