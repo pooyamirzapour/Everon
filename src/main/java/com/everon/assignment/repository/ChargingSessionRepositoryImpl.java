@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 /**
  * Repository class implements save,update, findAll, summary.
+ *
  * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
  */
 
@@ -47,6 +48,7 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It saves a new car charging session
+     *
      * @param stationId
      * @return CarChargingSession
      */
@@ -70,6 +72,7 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It finds all car charging session
+     *
      * @return List<CarChargingSession>
      */
     @Override
@@ -80,21 +83,30 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     @Override
     public void clear() {
-         map.clear();
+        map.clear();
     }
 
     /**
      * It finds all car charging session
+     *
      * @return List<CarChargingSession>
      */
     @Override
-    public CarChargingSession update(String uuid) throws ApiServiceException {
+    public CarChargingSession update(String id) throws ApiServiceException {
         log.info("Starting the update in repository");
 
-        LocalDateTime localDateTime = DateUtil.uuidToLocalDateTime(UUID.fromString(uuid));
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(id);
+        } catch (Exception e) {
+            throw new ApiServiceException(ErrorCode.ID_IS_NOT_VALID.getMessage(),
+                    ErrorCode.ID_IS_NOT_VALID, HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+
+        LocalDateTime localDateTime = DateUtil.uuidToLocalDateTime(uuid);
         CarChargingSession carChargingSession = map.get(localDateTime);
 
-        if (Objects.isNull(carChargingSession)  || !carChargingSession.getId().equals(UUID.fromString(uuid)))
+        if (Objects.isNull(carChargingSession) || !carChargingSession.getId().equals(uuid))
             throw new ApiServiceException(ErrorCode.ID_IS_NOT_VALID.getMessage(),
                     ErrorCode.ID_IS_NOT_VALID, HttpStatus.UNPROCESSABLE_ENTITY);
 
@@ -112,6 +124,7 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It makes a summary for last minute
+     *
      * @return Summary
      */
     @Override

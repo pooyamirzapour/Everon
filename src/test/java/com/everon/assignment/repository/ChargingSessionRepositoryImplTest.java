@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 /**
- * Test for repository level
+ * Test for repository level.
  * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
  */
 class ChargingSessionRepositoryImplTest extends AbstractTest {
