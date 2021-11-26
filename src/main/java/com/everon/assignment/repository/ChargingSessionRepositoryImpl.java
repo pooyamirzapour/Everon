@@ -7,6 +7,7 @@ import com.everon.assignment.model.enums.ErrorCode;
 import com.everon.assignment.model.enums.StatusEnum;
 import com.everon.assignment.util.DateUtil;
 import com.fasterxml.uuid.Generators;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 
 
 @Repository
+@Slf4j
 public class ChargingSessionRepositoryImpl implements ChargingSessionRepository {
 
 
@@ -45,6 +47,8 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     @Override
     public CarChargingSession save(String stationId) {
+        log.info("Starting the save in repository");
+
         lock.lock();
         CarChargingSession carChargingSession;
         try {
@@ -53,11 +57,15 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
         } finally {
             lock.unlock();
         }
+
+        log.info("Ending the save in repository");
+
         return carChargingSession;
     }
 
     @Override
     public List<CarChargingSession> findAll() {
+        log.info("Starting the findAll in repository");
         return map.values().stream().collect(Collectors.toList());
     }
 
@@ -68,6 +76,8 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     @Override
     public CarChargingSession update(String uuid) throws ApiServiceException {
+        log.info("Starting the update in repository");
+
         LocalDateTime localDateTime = DateUtil.uuidToLocalDateTime(UUID.fromString(uuid));
         CarChargingSession carChargingSession = map.get(localDateTime);
 
@@ -81,15 +91,22 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
         carChargingSession.setStoppedAt(LocalDateTime.now());
         carChargingSession.setStatus(StatusEnum.FINISHED);
+
+        log.info("ending the update in repository");
+
         return carChargingSession;
     }
 
     @Override
     public Summary summary() {
+        log.info("Starting the summary in repository");
+
         Collection<CarChargingSession> values = map.tailMap(LocalDateTime.now().minusSeconds(60), true).values();
         long startedCount = values.stream().filter(f -> f.getStatus().equals(StatusEnum.IN_PROGRESS)).count();
         long stoppedCount = values.stream().filter(f -> f.getStatus().equals(StatusEnum.FINISHED)).count();
         long totalCount = startedCount + stoppedCount;
+
+        log.info("Ending the summary in repository");
 
         return new Summary(totalCount, startedCount, stoppedCount);
 

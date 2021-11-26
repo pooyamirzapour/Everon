@@ -4,6 +4,7 @@ import com.everon.assignment.model.entity.CarChargingSession;
 import com.everon.assignment.model.entity.Summary;
 import com.everon.assignment.repository.ChargingSessionRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
