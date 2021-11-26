@@ -124,7 +124,6 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It makes a summary for last minute
-     *
      * @return Summary
      */
     @Override
