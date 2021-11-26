@@ -19,7 +19,7 @@ public class ExceptionHandlers {
     /**
      * Handle all exceptions with message, status, and log.
      * @param exception
-     * @return
+     * @return ResponseEntity
      */
     @ExceptionHandler(ApiServiceException.class)
     public ResponseEntity<?> apiServiceException(ApiServiceException exception) {
