@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 
 /**
  * Repository class implements save,update, findAll, summary.
- *
  * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
  */
 
@@ -37,7 +36,6 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * Create a CarChargingSession based on stationId.
-     *
      * @param stationId
      * @return CarChargingSession
      */
@@ -53,7 +51,6 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It saves a new car charging session
-     *
      * @param stationId
      * @return CarChargingSession
      */
@@ -83,7 +80,6 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It finds all car charging session
-     *
      * @return List<CarChargingSession>
      */
     @Override
@@ -102,7 +98,6 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It finds all car charging session
-     *
      * @return List<CarChargingSession>
      */
     @Override
@@ -140,7 +135,6 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It makes a summary for last minute
-     *
      * @return Summary
      */
     @Override
