@@ -2,10 +2,8 @@ package com.everon.assignment.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.builders.ResponseBuilder;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -14,7 +12,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Collections;
 
-import static com.google.common.collect.Lists.newArrayList;
+/**
+ * Swagger Configuration.
+ * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
+ */
 
 @Configuration
 @EnableSwagger2
@@ -35,7 +36,7 @@ public class Swagger2Config {
 
     private ApiInfo getApiInfo() {
         return new ApiInfo(
-                "everon assignment",
+                "Everon Assignment",
                 "This application is a Java Web Application running ",
                 "1.0.0",
                 "",
