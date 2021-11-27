@@ -11,11 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
  * Controller class.
+ *
  * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
  */
 
@@ -28,6 +28,7 @@ public class ChargingSessionController {
 
     /**
      * api for new Session
+     *
      * @param request NewSessionRequest
      * @return CarChargingSession
      */
@@ -42,6 +43,7 @@ public class ChargingSessionController {
 
     /**
      * For stop car charging session
+     *
      * @param stationId
      * @return CarChargingSession
      * @throws Exception
@@ -56,25 +58,27 @@ public class ChargingSessionController {
 
     /**
      * For get all car charging session
+     *
      * @return List<CarChargingSession>
      */
     @ApiOperation(value = "Retrieve all charging session"
             , nickname = "Retrieve Sessions", notes = "Retrieve All Charging Session")
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<CarChargingSession> getChargingSessions()  {
+    public List<CarChargingSession> getChargingSessions() {
         return chargingSessionService.getSessions();
     }
 
     /**
      * For last a minute report
+     *
      * @return Summary
      */
     @ApiOperation(value = "Summary charging session"
             , nickname = "Summary Sessions", notes = "Summary Charging Session")
     @GetMapping("/summary")
     @ResponseStatus(HttpStatus.OK)
-    public Summary getSummary()  {
+    public Summary getSummary() {
         return chargingSessionService.summary();
     }
 }
