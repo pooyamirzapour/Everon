@@ -36,6 +36,11 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     ReentrantLock lock = new ReentrantLock();
 
+    /**
+     * Create a CarChargingSession based on stationId.
+     * @param stationId
+     * @return
+     */
     private CarChargingSession createCarChargingSession(String stationId) {
         CarChargingSession carChargingSession = new CarChargingSession();
         UUID uuid = Generators.timeBasedGenerator().generate();
@@ -48,7 +53,6 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It saves a new car charging session
-     *
      * @param stationId
      * @return CarChargingSession
      */
@@ -72,7 +76,6 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It finds all car charging session
-     *
      * @return List<CarChargingSession>
      */
     @Override
@@ -81,6 +84,9 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
         return map.values().stream().collect(Collectors.toList());
     }
 
+    /**
+     * Do empty the map
+     */
     @Override
     public void clear() {
         map.clear();
@@ -88,7 +94,6 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It finds all car charging session
-     *
      * @return List<CarChargingSession>
      */
     @Override
