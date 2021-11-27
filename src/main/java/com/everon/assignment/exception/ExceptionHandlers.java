@@ -30,7 +30,8 @@ public class ExceptionHandlers {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> apiServiceException(Exception exception) {
         log.error(exception.getMessage());
-        return new ResponseEntity<>(new ErrorMsg(2000, exception.getMessage()), HttpStatus.UNPROCESSABLE_ENTITY);
+        return new ResponseEntity<>(new ErrorMsg(2000, exception.getMessage()==null?"Internal Error":exception.getMessage()),
+                HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
 }

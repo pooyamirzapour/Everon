@@ -55,8 +55,11 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
      * @return CarChargingSession
      */
     @Override
-    public CarChargingSession save(String stationId) {
+    public CarChargingSession save(String stationId) throws ApiServiceException {
         log.info("Starting the save in repository");
+
+        if ( Objects.isNull(stationId) || stationId.isEmpty() )
+            throw new ApiServiceException(ErrorCode.STATION_ID_IS_EMPTY.getMessage(),ErrorCode.STATION_ID_IS_EMPTY,HttpStatus.UNPROCESSABLE_ENTITY );
 
         lock.lock();
         CarChargingSession carChargingSession;

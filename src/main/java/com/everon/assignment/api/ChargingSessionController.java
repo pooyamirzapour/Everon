@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -18,7 +20,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/chargingSessions")
 @AllArgsConstructor
 public class ChargingSessionController {
 
@@ -31,9 +33,9 @@ public class ChargingSessionController {
      */
     @ApiOperation(value = "Submit a new charging session " +
             "for the station.", nickname = "New Session", notes = "New Charging Session")
-    @PostMapping("/chargingSessions")
-    @ResponseStatus(HttpStatus.OK)
-    public CarChargingSession newChargingSession(@RequestBody NewSessionRequest request)  {
+    @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
+    public CarChargingSession newChargingSession(@Valid @RequestBody() NewSessionRequest request) throws ApiServiceException {
         return chargingSessionService.newSession(request.getStationId());
     }
 
@@ -46,7 +48,7 @@ public class ChargingSessionController {
      */
     @ApiOperation(value = "Stop charging session"
             , nickname = "Stop Session", notes = "Stop Charging Session")
-    @PutMapping("/chargingSessions/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public CarChargingSession stopChargingSession(@PathVariable("id") String stationId) throws Exception {
         return chargingSessionService.stopSession(stationId);
@@ -58,7 +60,7 @@ public class ChargingSessionController {
      */
     @ApiOperation(value = "Retrieve all charging session"
             , nickname = "Retrieve Sessions", notes = "Retrieve All Charging Session")
-    @GetMapping("/chargingSessions")
+    @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public List<CarChargingSession> getChargingSessions()  {
         return chargingSessionService.getSessions();
@@ -70,7 +72,7 @@ public class ChargingSessionController {
      */
     @ApiOperation(value = "Summary charging session"
             , nickname = "Summary Sessions", notes = "Summary Charging Session")
-    @GetMapping("/chargingSessions/summary")
+    @GetMapping("/summary")
     @ResponseStatus(HttpStatus.OK)
     public Summary getSummary()  {
         return chargingSessionService.summary();

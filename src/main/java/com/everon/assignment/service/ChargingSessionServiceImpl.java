@@ -27,8 +27,8 @@ public class ChargingSessionServiceImpl implements ChargingSessionService {
      * @return CarChargingSession
      */
     @Override
-    public CarChargingSession newSession(String stationId) {
-        return chargingSessionRepository.save(stationId.trim());
+    public CarChargingSession newSession(String stationId) throws ApiServiceException {
+        return chargingSessionRepository.save(stationId);
     }
 
     /**

@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface ChargingSessionRepository {
 
-    CarChargingSession save(String stationId);
+    CarChargingSession save(String stationId) throws ApiServiceException;
 
     List<CarChargingSession> findAll();
 

@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface ChargingSessionService {
 
-    CarChargingSession newSession(String stationId);
+    CarChargingSession newSession(String stationId) throws ApiServiceException;
 
     CarChargingSession stopSession(String stationId) throws Exception, ApiServiceException;
 

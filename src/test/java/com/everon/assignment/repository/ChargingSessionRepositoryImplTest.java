@@ -16,7 +16,7 @@ import java.util.List;
 class ChargingSessionRepositoryImplTest extends AbstractTest {
 
     @Test
-    void should_returnCarChargingSession_when_stationIdSet() {
+    void should_returnCarChargingSession_when_stationIdSet() throws ApiServiceException {
         CarChargingSession savedItem = chargingSessionRepository.save("ABC-123456");
         Assertions.assertNotNull(savedItem);
         Assertions.assertEquals(savedItem.getStationId(), "ABC-123456");
@@ -24,7 +24,7 @@ class ChargingSessionRepositoryImplTest extends AbstractTest {
     }
 
     @Test
-    void should_returnAllCarChargingSession_when_findAllIsCalled() {
+    void should_returnAllCarChargingSession_when_findAllIsCalled() throws ApiServiceException {
         chargingSessionRepository.save("ABC-123456");
         chargingSessionRepository.save("ABC-123457");
         chargingSessionRepository.save("ABC-123458");
