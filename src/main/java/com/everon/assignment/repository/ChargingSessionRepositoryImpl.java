@@ -22,10 +22,8 @@ import java.util.stream.Collectors;
 
 /**
  * Repository class implements save,update, findAll, summary.
- *
  * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
  */
-
 
 @Repository
 @Slf4j
