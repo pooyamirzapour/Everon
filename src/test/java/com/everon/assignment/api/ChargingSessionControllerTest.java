@@ -33,7 +33,7 @@ class ChargingSessionControllerTest extends AbstractTest {
         HttpEntity<?> entity = new HttpEntity<>(request, headers);
         String uri = String.format("http://localhost:%s/chargingSessions", localPort);
         ResponseEntity<CarChargingSession> response = rest.exchange(uri, HttpMethod.POST, entity, CarChargingSession.class);
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
 
         chargingSessionRepository.clear();
     }
@@ -48,7 +48,7 @@ class ChargingSessionControllerTest extends AbstractTest {
         HttpEntity<?> entity = new HttpEntity<>(request, headers);
         String uri = String.format("http://localhost:%s/chargingSessions", localPort);
         ResponseEntity<CarChargingSession> exchange = rest.exchange(uri, HttpMethod.POST, entity, CarChargingSession.class);
-        Assertions.assertEquals(HttpStatus.OK, exchange.getStatusCode());
+        Assertions.assertEquals(HttpStatus.CREATED, exchange.getStatusCode());
 
         entity = new HttpEntity<>(null, headers);
         uri = String.format("http://localhost:%s/chargingSessions/"+exchange.getBody().getId() , localPort);
@@ -78,7 +78,7 @@ class ChargingSessionControllerTest extends AbstractTest {
         HttpEntity<?> entity = new HttpEntity<>(request, headers);
         String uri = String.format("http://localhost:%s/chargingSessions", localPort);
         ResponseEntity<CarChargingSession> exchange = rest.exchange(uri, HttpMethod.POST, entity, CarChargingSession.class);
-        Assertions.assertEquals(HttpStatus.OK, exchange.getStatusCode());
+        Assertions.assertEquals(HttpStatus.CREATED, exchange.getStatusCode());
 
 
         entity = new HttpEntity<>(null, headers);
