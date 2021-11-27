@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 /**
  * Repository class implements save,update, findAll, summary.
+ *
  * @author Pooya Mirzapour (pooyamirzapour@gmail.com)
  */
 
@@ -36,6 +37,7 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * Create a CarChargingSession based on stationId.
+     *
      * @param stationId
      * @return CarChargingSession
      */
@@ -51,16 +53,18 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It saves a new car charging session
+     *
      * @param stationId
      * @return CarChargingSession
      */
     @Override
     public CarChargingSession save(String stationId) throws ApiServiceException {
-        log.info("Starting the save in repository");
+        String format = String.format("Starting the save in repository,stationId: %s", stationId);
+        log.info(format);
 
-        if ( Objects.isNull(stationId) || stationId.isEmpty() )
-            throw new ApiServiceException(ErrorCode.STATION_ID_IS_EMPTY.getMessage(),ErrorCode.STATION_ID_IS_EMPTY,
-                    HttpStatus.BAD_REQUEST );
+        if (Objects.isNull(stationId) || stationId.isEmpty())
+            throw new ApiServiceException(ErrorCode.STATION_ID_IS_EMPTY.getMessage(), ErrorCode.STATION_ID_IS_EMPTY,
+                    HttpStatus.BAD_REQUEST);
 
         lock.lock();
         CarChargingSession carChargingSession;
@@ -71,13 +75,15 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
             lock.unlock();
         }
 
-        log.info("Ending the save in repository");
+        format = String.format("Ending the save in repository,stationId: %s", stationId);
+        log.info(format);
 
         return carChargingSession;
     }
 
     /**
      * It finds all car charging session
+     *
      * @return List<CarChargingSession>
      */
     @Override
@@ -96,11 +102,14 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
 
     /**
      * It finds all car charging session
+     *
      * @return List<CarChargingSession>
      */
     @Override
     public CarChargingSession update(String id) throws ApiServiceException {
-        log.info("Starting the update in repository");
+
+        String format = String.format("Starting the update in repository,id: %s", id);
+        log.info(format);
 
         UUID uuid;
         try {
@@ -124,13 +133,14 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
         carChargingSession.setStoppedAt(LocalDateTime.now());
         carChargingSession.setStatus(StatusEnum.FINISHED);
 
-        log.info("ending the update in repository");
-
+        format = String.format("ng the update in repository,id: %s", id);
+        log.info(format);
         return carChargingSession;
     }
 
     /**
      * It makes a summary for last minute
+     *
      * @return Summary
      */
     @Override
