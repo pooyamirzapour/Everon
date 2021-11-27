@@ -27,8 +27,7 @@ public class ChargingSessionController {
     private ChargingSessionService chargingSessionService;
 
     /**
-     * api for new Session
-     *
+     * api for a new Session
      * @param request NewSessionRequest
      * @return CarChargingSession
      */
@@ -42,8 +41,7 @@ public class ChargingSessionController {
 
 
     /**
-     * For stop car charging session
-     *
+     * For stop a car charging session
      * @param stationId
      * @return CarChargingSession
      * @throws Exception
@@ -58,7 +56,6 @@ public class ChargingSessionController {
 
     /**
      * For get all car charging session
-     *
      * @return List<CarChargingSession>
      */
     @ApiOperation(value = "Retrieve all charging session"
@@ -71,7 +68,6 @@ public class ChargingSessionController {
 
     /**
      * For last a minute report
-     *
      * @return Summary
      */
     @ApiOperation(value = "Summary charging session"
