@@ -39,7 +39,7 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
     /**
      * Create a CarChargingSession based on stationId.
      * @param stationId
-     * @return
+     * @return CarChargingSession
      */
     private CarChargingSession createCarChargingSession(String stationId) {
         CarChargingSession carChargingSession = new CarChargingSession();
