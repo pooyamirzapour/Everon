@@ -1,5 +1,5 @@
 ## Car Charging Session
-This project implements some APIs for submit, update, get and summarized report of car charging
+This project implements some APIs for submit, update, get, and summarized report of car charging
 session with the help of REST api.
 
 ### Approach
