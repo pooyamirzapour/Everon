@@ -59,7 +59,8 @@ public class ChargingSessionRepositoryImpl implements ChargingSessionRepository 
         log.info("Starting the save in repository");
 
         if ( Objects.isNull(stationId) || stationId.isEmpty() )
-            throw new ApiServiceException(ErrorCode.STATION_ID_IS_EMPTY.getMessage(),ErrorCode.STATION_ID_IS_EMPTY,HttpStatus.UNPROCESSABLE_ENTITY );
+            throw new ApiServiceException(ErrorCode.STATION_ID_IS_EMPTY.getMessage(),ErrorCode.STATION_ID_IS_EMPTY,
+                    HttpStatus.BAD_REQUEST );
 
         lock.lock();
         CarChargingSession carChargingSession;
